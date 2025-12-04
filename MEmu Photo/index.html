@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOVIE ZONE - Sinhala Dubbed Movies</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#ff0000;
+  --bg:#070707;
+  --card:#0f0f12;
+  --neon-1:#00e5ff;
+}
+
+body { font-family:'Noto Sans Sinhala',sans-serif; margin:0; background:var(--bg); color:#fff; }
+
+/* Header */
+header { background:#0b0b0b; padding:15px 10px; display:flex; align-items:center; justify-content:center; gap:15px; border-bottom:2px solid var(--red); }
+header img { width:60px; height:60px; border-radius:10px; object-fit:cover; }
+header h1 { margin:0; font-size:26px; color:var(--red); text-shadow:0 0 8px rgba(255,0,0,.9); }
+
+/* Navigation */
+nav { background:#0b0b0b; padding:10px; text-align:center; border-top:1px solid rgba(0,122,255,.08); border-bottom:1px solid rgba(0,122,255,.08); }
+nav a { color: var(--neon-1); margin:0 12px; text-decoration:none; font-weight:700; }
+
+/* Filters */
+.filters { text-align:center; margin:20px 0; }
+.filters select, .filters input { padding:10px 12px; margin:0 5px; border-radius:8px; border:2px solid rgba(0,229,255,.12); background:#0c0c0c; color:var(--neon-1); }
+
+/* Container */
+.container { max-width:1000px; margin:0 auto; padding:0 15px; }
+
+/* Movie Cards */
+.movie-card { background:var(--card); border-radius:12px; padding:10px; margin:10px; cursor:pointer; border:1px solid var(--neon-1); display:inline-block; width:280px; vertical-align:top; }
+.movie-card:hover { transform: translateY(-3px); box-shadow:0 10px 20px rgba(0,229,255,.2); }
+.movie-card img { width:100%; border-radius:10px; margin-bottom:10px; }
+.movie-card h2 { color:var(--neon-1); font-size:16px; margin:5px 0; }
+.movie-card p { font-size:13px; color:#cfeeff; }
+
+/* Detail View */
+.detail-view { display:none; background:var(--card); padding:20px; border-radius:10px; margin-bottom:20px; }
+.detail-view img { width:100%; max-height:400px; object-fit:cover; border-radius:10px; margin-bottom:15px; }
+.detail-view h1 { color:var(--red); font-size:22px; margin:0 0 10px; }
+.detail-view p { font-size:14px; margin:5px 0; }
+.download-btn { background:var(--red); color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none; display:inline-block; margin-top:12px; }
+.download-btn:hover { transform:translateY(-2px);}
+.back-btn { margin-top:15px; display:inline-block; color:var(--neon-1); cursor:pointer; text-decoration:underline; }
+
+/* Responsive */
+@media(max-width:600px){ .movie-card { width:100%; margin:10px 0; } header { flex-direction:column; gap:8px; } }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <img src="https://via.placeholder.com/60x60.png?text=Logo" alt="MOVIE ZONE Logo">
+  <h1>MOVIE ZONE</h1>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <a href="#">මුල් පිටුව</a>
+  <a href="#">Download</a>
+  <a href="#">Watch Online</a>
+  <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="🔍 චිත්‍රපටය සොයන්න..." onkeyup="filterMovies()">
+    <select id="genreSelect" onchange="filterMovies()">
+      <option value="">All Genres</option>
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+    </select>
+  </div>
+
+  <!-- Movie List -->
+  <div id="movieList">
+    <div class="movie-card" data-genre="Action" onclick="showDetail('john-wick-4')">
+      <img src="https://i.ibb.co/2t7GQ5R/john-wick-4.jpg" alt="John Wick 4">
+      <h2>John Wick 4 (2023)</h2>
+      <p>🗓 2023 | 🗣 සිංහල | 🎥 720p | 💾 950MB</p>
+    </div>
+
+    <div class="movie-card" data-genre="Adventure" onclick="showDetail('avatar-2')">
+      <img src="https://i.ibb.co/yN0Tt4v/avatar-2.jpg" alt="Avatar 2">
+      <h2>Avatar 2: Way of Water (2022)</h2>
+      <p>🗓 2022 | 🗣 සිංහල | 🎥 1080p | 💾 1.5GB</p>
+    </div>
+
+    <div class="movie-card" data-genre="Action" onclick="showDetail('fast-x')">
+      <img src="https://i.ibb.co/k5xkXYs/fast-x.jpg" alt="Fast X">
+      <h2>Fast X (2023)</h2>
+      <p>🗓 2023 | 🗣 සිංහල | 🎥 720p | 💾 1.2GB</p>
+    </div>
+  </div>
+
+  <!-- Detail Views -->
+  <div id="john-wick-4" class="detail-view">
+    <img src="https://i.ibb.co/2t7GQ5R/john-wick-4.jpg" alt="John Wick 4">
+    <h1>John Wick 4 (2023)</h1>
+    <p>🗓 Release: 2023</p>
+    <p>🕒 Duration: 2h 50m</p>
+    <p>🎬 IMDb: 7.5/10</p>
+    <p>📖 Summary: John Wick continues his fight against the High Table in an epic showdown.</p>
+    <a class="download-btn" href="#">📥 බාගන්න</a>
+    <span class="back-btn" onclick="backToList()">⬅️ Back to List</span>
+  </div>
+
+  <div id="avatar-2" class="detail-view">
+    <img src="https://i.ibb.co/yN0Tt4v/avatar-2.jpg" alt="Avatar 2">
+    <h1>Avatar 2: Way of Water (2022)</h1>
+    <p>🗓 Release: 2022</p>
+    <p>🕒 Duration: 3h 12m</p>
+    <p>🎬 IMDb: 7.8/10</p>
+    <p>📖 Summary: Jake Sully and Neytiri navigate new challenges in Pandora’s oceans.</p>
+    <a class="download-btn" href="#">📥 බාගන්න</a>
+    <span class="back-btn" onclick="backToList()">⬅️ Back to List</span>
+  </div>
+
+  <div id="fast-x" class="detail-view">
+    <img src="https://i.ibb.co/k5xkXYs/fast-x.jpg" alt="Fast X">
+    <h1>Fast X (2023)</h1>
+    <p>🗓 Release: 2023</p>
+    <p>🕒 Duration: 2h 45m</p>
+    <p>🎬 IMDb: 6.9/10</p>
+    <p>📖 Summary: Dom and his crew face new challenges and enemies.</p>
+    <a class="download-btn" href="#">📥 බාගන්න</a>
+    <span class="back-btn" onclick="backToList()">⬅️ Back to List</span>
+  </div>
+</div>
+
+<script>
+function showDetail(id){
+  document.getElementById('movieList').style.display='none';
+  document.getElementById(id).style.display='block';
+}
+function backToList(){
+  let details=document.getElementsByClassName('detail-view');
+  for(let i=0;i<details.length;i++){ details[i].style.display='none'; }
+  document.getElementById('movieList').style.display='block';
+}
+function filterMovies(){
+  let input=document.getElementById('searchInput').value.toUpperCase();
+  let genre=document.getElementById('genreSelect').value;
+  let cards=document.getElementById('movieList').getElementsByClassName('movie-card');
+  for(let i=0;i<cards.length;i++){
+    let title=cards[i].getElementsByTagName('h2')[0].textContent.toUpperCase();
+    let cardGenre=cards[i].getAttribute('data-genre');
+    if(title.indexOf(input)>-1 && (genre===""||genre===cardGenre)){
+      cards[i].style.display="";
+    }else{ cards[i].style.display="none"; }
+  }
+}
+</script>
+
+</body>
+</html>
